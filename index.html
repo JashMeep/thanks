@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hi Mom ❤️</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffdee9, #b5fffc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 28px 22px 32px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: #ff7aa2;
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 180px;
+      height: 180px;
+      background: #7ad7ff;
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .heart {
+      color: #ff4d6d;
+      font-size: 2.5rem;
+      animation: pulse 1.5s infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f8f8;
+      font-size: 1.4rem;
+      color: #ff4d6d;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .icon:hover {
+      transform: translateY(-4px);
+      background: #ffe6ec;
+    }
+
+    button {
+      border: none;
+      background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+      color: white;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255,77,109,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(255,77,109,0.5);
+    }
+
+    .hidden-message {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      color: #444;
+      display: none;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    @media (max-width: 360px) {
+      h1 { font-size: 1.6rem; }
+      .heart { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="heart">❤️</div>
+    <h1>Hi Mom</h1>
+
+    <p>
+      I just wanted to say hi and remind you how much I love you.
+      I miss you more than words can explain, and I think about you every day.
+    </p>
+
+    <div class="icons">
+      <div class="icon" onclick="showLove()"><i class="fas fa-heart"></i></div>
+      <div class="icon" onclick="showStar()"><i class="fas fa-star"></i></div>
+      <div class="icon" onclick="showSmile()"><i class="fas fa-face-smile"></i></div>
+      <div class="icon" onclick="showWarmth()"><i class="fas fa-mug-hot"></i></div>
+    </div>
+
+    <div id="iconMessage" class="hidden-message"></div>
+      <div class="icon"><i class="fas fa-star"></i></div>
+      <div class="icon"><i class="fas fa-face-smile"></i></div>
+      <div class="icon"><i class="fas fa-mug-hot"></i></div>
+    </div>
+
+    <button onclick="showMessage()">Tap for a surprise</button>
+
+    <div id="message" class="hidden-message">
+      No matter how far we are, you are always in my heart.
+      I can’t wait to see you again. 💕
+    </div>
+
+    <footer>
+      Made with love, just for you 🌸
+    </footer>
+  </div>
+
+  <script>
+    function showMessage() {
+      const msg = document.getElementById('message');
+      msg.style.display = 'block';
+    }
+
+    function showIconMessage(text) {
+      const box = document.getElementById('iconMessage');
+      box.innerText = text;
+      box.style.display = 'block';
+    }
+
+    function showLove() {
+      showIconMessage('This heart is for all the love I have for you ❤️');
+    }
+
+    function showStar() {
+      showIconMessage('You are my guiding star, always shining ⭐');
+    }
+
+    function showSmile() {
+      showIconMessage('Your smile is my favorite thing in the world 😊');
+    }
+
+    function showWarmth() {
+      showIconMessage('Thinking of your warmth and kindness every day ☕');
+    }
+  </script>
+
+</body>
+</html>
